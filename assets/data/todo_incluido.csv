@@ -1,0 +1,66 @@
+Hotel,Tipo de Habitacion,Dias de la Semana,Tarifa Baja,Tarifa Media,Tarifa Alta
+DECAMERON PANACA,Estándar,Entre Semana (D-L-M-M-J),75,82,94
+DECAMERON PANACA,Estándar,Fin de Semana (V-S),75,82,94
+DECAMERON LAS HELICONIAS,Estándar / Superior / Deluxe,Entre Semana (D-L-M-M-J),69,76,91
+DECAMERON LAS HELICONIAS,Estándar / Superior / Deluxe,Fin de Semana (V-S),69,76,91
+DECAMERON CARTAGENA,Estándar,Entre Semana (D-L-M-M-J),99,106,115
+DECAMERON CARTAGENA,Estándar,Fin de Semana (V-S),102,106,115
+DECAMERON BARÚ,Estándar,Entre Semana (D-L-M-M-J),152,170,209
+DECAMERON BARÚ,Estándar,Fin de Semana (V-S),155,170,209
+DECAMERON BARÚ,Estándar Plus / Ocean Front Plus,Entre Semana (D-L-M-M-J),198,209,261
+DECAMERON BARÚ,Estándar Plus / Ocean Front Plus,Fin de Semana (V-S),201,209,261
+DECAMERON GALEÓN,Estándar / Villa,Entre Semana (D-L-M-M-J),101,115,122
+DECAMERON GALEÓN,Estándar / Villa,Fin de Semana (V-S),110,115,122
+DECAMERON GALEÓN,Suite,Entre Semana (D-L-M-M-J),151,195,224
+DECAMERON GALEÓN,Suite,Fin de Semana (V-S),151,195,224
+DECAMERON AQUARIUM,Estándar,Entre Semana (D-L-M-M-J),135,151,166
+DECAMERON AQUARIUM,Estándar,Fin de Semana (V-S),139,152,166
+DECAMERON AQUARIUM,Ocean Front,Entre Semana (D-L-M-M-J),144,163,175
+DECAMERON AQUARIUM,Ocean Front,Fin de Semana (V-S),151,166,175
+DECAMERON SAN LUIS,Estándar,Entre Semana (D-L-M-M-J),105,119,128
+DECAMERON SAN LUIS,Estándar,Fin de Semana (V-S),112,121,128
+DECAMERON SAN LUIS,Ocean View,Entre Semana (D-L-M-M-J),105,122,128
+DECAMERON SAN LUIS,Ocean View,Fin de Semana (V-S),115,125,128
+DECAMERON DELFINES,Estándar,Entre Semana (D-L-M-M-J),134,150,165
+DECAMERON DELFINES,Estándar,Fin de Semana (V-S),138,151,165
+DECAMERON MARYLAND,Estándar / Junior Suite / Superior,Entre Semana (D-L-M-M-J),134,150,165
+DECAMERON MARYLAND,Estándar / Junior Suite / Superior,Fin de Semana (V-S),138,151,165
+DECAMERON MARAZUL,Estándar,Entre Semana (D-L-M-M-J),135,151,163
+DECAMERON MARAZUL,Estándar,Fin de Semana (V-S),139,151,163
+DECAMERON ISLEÑO,Estándar,Entre Semana (D-L-M-M-J),143,162,209
+DECAMERON ISLEÑO,Estándar,Fin de Semana (V-S),145,163,209
+DECAMERON ISLEÑO,Ocean View,Entre Semana (D-L-M-M-J),155,178,238
+DECAMERON ISLEÑO,Ocean View,Fin de Semana (V-S),161,181,238
+DECAMERON ISLEÑO,Superior Ocean View,Entre Semana (D-L-M-M-J),166,192,257
+DECAMERON ISLEÑO,Superior Ocean View,Fin de Semana (V-S),175,195,257
+DECALODGE TICUNA,Estándar,Todos los días,89,89,89
+ROYAL DECAMERON MOMPICHE,Estándar / Ocean View / Ocean Front,Entre Semana (D-L-M-M-J),98,130,166
+ROYAL DECAMERON MOMPICHE,Estándar / Ocean View / Ocean Front,Fin de Semana (V-S),130,144,166
+ROYAL DECAMERON PUNTA CENTINELA,Estándar / Ocean View / Superior Ocean View,Entre Semana (D-L-M-M-J),98,131,167
+ROYAL DECAMERON PUNTA CENTINELA,Estándar / Ocean View / Superior Ocean View,Fin de Semana (V-S),131,145,167
+ROYAL DECAMERON SALINITAS,Estándar / Superior,Entre Semana (D-L-M-M-J),82,84,158
+ROYAL DECAMERON SALINITAS,Estándar / Superior,Fin de Semana (V-S),84,85,158
+GRAND DECAMERON COMPLEX,Estándar,Todos los días,71,83,93
+DECAMERON ISLA CORAL,Estándar,Todos los días,76,87,91
+DECAMERON LA MARINA,Estándar,Todos los días,76,87,91
+GRAND DECAMERON LOS CABOS,Estándar / Ocean Front,Todos los días,93,93,108
+DECAMERON LOS COCOS,Estándar,Todos los días,76,87,91
+GRAND DECAMERON PANAMÁ,Estándar,Entre Semana (D-L-M-M-J),87,121,159
+GRAND DECAMERON PANAMÁ,Estándar,Fin de Semana (V-S),89,131,159
+GRAND DECAMERON PANAMÁ,Ocean View,Entre Semana (D-L-M-M-J),92,123,165
+GRAND DECAMERON PANAMÁ,Ocean View,Fin de Semana (V-S),98,133,165
+GRAND DECAMERON PANAMÁ,Estándar Plus,Entre Semana (D-L-M-M-J),101,131,181
+GRAND DECAMERON PANAMÁ,Estándar Plus,Fin de Semana (V-S),109,145,181
+GRAND DECAMERON PANAMÁ,Ocean View Plus,Entre Semana (D-L-M-M-J),107,140,187
+GRAND DECAMERON PANAMÁ,Ocean View Plus,Fin de Semana (V-S),111,151,187
+ROYAL DECAMERON PUNTA SAL,Estándar / Ocean View / Superior,Entre Semana (D-L-M-M-J),102,127,151
+ROYAL DECAMERON PUNTA SAL,Estándar / Ocean View / Superior,Fin de Semana (V-S),110,131,151
+ROYAL DECAMERON PUNTA SAL,Estándar Plus / Ocean View Plus / Superior Plus,Entre Semana (D-L-M-M-J),121,145,170
+ROYAL DECAMERON PUNTA SAL,Estándar Plus / Ocean View Plus / Superior Plus,Fin de Semana (V-S),129,149,170
+DECAMERON EL PUEBLO,Estándar / Superior,Entre Semana (D-L-M-M-J),90,111,135
+DECAMERON EL PUEBLO,Estándar / Superior,Fin de Semana (V-S),97,113,135
+DECAMERON CLUB CARIBBEAN,Courtyard / Garden View / Suite / Ocean Front,Todos los días,77,86,95
+GRAND DECAMERON MONTEGO BEACH,Estándar / Ocean View,Todos los días,80,95,100
+GRAND DECAMERON CORNWALL BEACH,Beach View / Ocean View,Entre Semana (D-L-M-M-J),110,123,127
+GRAND DECAMERON CORNWALL BEACH,Beach View / Ocean View,Fin de Semana (V-S),113,126,127
+RADISSON MIRAFLORES,Estándar,Todos los días,31,31,31 

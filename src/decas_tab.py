@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel, 
                               QComboBox, QSpinBox, QGroupBox, QCalendarWidget,
-                              QPushButton, QLineEdit, QScrollArea, QCompleter)
+                              QPushButton, QLineEdit, QScrollArea, QCompleter, QApplication)
 from PySide6.QtCore import QDate, Qt
 from decameron_styles import GROUPBOX_STYLE, COMBOBOX_STYLE, LABEL_STYLE
 
@@ -213,7 +213,8 @@ class DecasTab(QWidget):
             spinner.setValue(0)
             spinner.setMinimumWidth(100)
             spinner.setButtonSymbols(QSpinBox.UpDownArrows)
-            spinner.wheelEvent = lambda event: None  # Ignorar eventos de rueda
+            spinner.wheelEvent = lambda event: custom_wheel_event(spinner, event)
+            spinner.setFocusPolicy(Qt.ClickFocus)
             spinner.setStyleSheet("""
                 QSpinBox {
                     padding: 8px;
@@ -438,4 +439,8 @@ class DecasTab(QWidget):
         if date != self.check_out_date:
             self.check_out_date = date
             self.check_out_input.setText(date.toString("dd/MM/yyyy"))
-            self.calculate_total() 
+            self.calculate_total()
+
+def custom_wheel_event(spinbox, event):
+    spinbox.clearFocus()
+    event.ignore()  # Permite que el evento suba al padre (scroll area) 

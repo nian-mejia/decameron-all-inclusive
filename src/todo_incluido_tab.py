@@ -225,27 +225,27 @@ class TodoIncluidoTab(QWidget):
         completer.setCompletionMode(QCompleter.PopupCompletion)
         self.hotel_combo.setCompleter(completer)
         
-        room_label = QLabel("Tipo de Habitación:")
-        room_label.setStyleSheet(LABEL_STYLE)
-        self.room_combo = QComboBox()
-        self.room_combo.setMinimumWidth(300)
-        self.room_combo.setStyleSheet(COMBOBOX_STYLE)
-        
         season_label = QLabel("Temporada:")
         season_label.setStyleSheet(LABEL_STYLE)
         self.season_combo = QComboBox()
         self.season_combo.setMinimumWidth(300)
         self.season_combo.setStyleSheet(COMBOBOX_STYLE)
         
+        room_label = QLabel("Tipo de Habitación:")
+        room_label.setStyleSheet(LABEL_STYLE)
+        self.room_combo = QComboBox()
+        self.room_combo.setMinimumWidth(300)
+        self.room_combo.setStyleSheet(COMBOBOX_STYLE)
+        
         # Agregar los widgets al layout
         hotel_layout.addWidget(hotel_label)
         hotel_layout.addWidget(self.hotel_combo)
         hotel_layout.addSpacing(5)
-        hotel_layout.addWidget(room_label)
-        hotel_layout.addWidget(self.room_combo)
-        hotel_layout.addSpacing(5)
         hotel_layout.addWidget(season_label)
         hotel_layout.addWidget(self.season_combo)
+        hotel_layout.addSpacing(5)
+        hotel_layout.addWidget(room_label)
+        hotel_layout.addWidget(self.room_combo)
         
         hotel_group.setLayout(hotel_layout)
         layout.addWidget(hotel_group)
@@ -265,6 +265,8 @@ class TodoIncluidoTab(QWidget):
         self.adults_spin = QSpinBox()
         self.adults_spin.setRange(1, 10)
         self.adults_spin.setValue(2)
+        self.adults_spin.wheelEvent = lambda event, s=self.adults_spin: custom_wheel_event(s, event)
+        self.adults_spin.setFocusPolicy(Qt.ClickFocus)
         adults_layout.addWidget(adults_label)
         adults_layout.addWidget(self.adults_spin)
         left_layout.addLayout(adults_layout)
@@ -280,6 +282,8 @@ class TodoIncluidoTab(QWidget):
         self.children_spin.setRange(0, 8)
         self.children_spin.setValue(0)
         self.children_spin.valueChanged.connect(self.update_children_inputs)
+        self.children_spin.wheelEvent = lambda event, s=self.children_spin: custom_wheel_event(s, event)
+        self.children_spin.setFocusPolicy(Qt.ClickFocus)
         right_layout.addWidget(children_label)
         right_layout.addWidget(self.children_spin)
         
@@ -356,7 +360,8 @@ class TodoIncluidoTab(QWidget):
         self.discount_spinbox.setValue(10)
         self.discount_spinbox.setSuffix("%")
         self.discount_spinbox.setEnabled(False)
-        
+        self.discount_spinbox.wheelEvent = lambda event, s=self.discount_spinbox: custom_wheel_event(s, event)
+        self.discount_spinbox.setFocusPolicy(Qt.ClickFocus)
         offer_options_layout.addWidget(self.discount_checkbox)
         offer_options_layout.addWidget(self.discount_spinbox)
         offers_layout.addLayout(offer_options_layout)
@@ -367,6 +372,8 @@ class TodoIncluidoTab(QWidget):
         self.dollar_value = QSpinBox()
         self.dollar_value.setRange(1, 10000)
         self.dollar_value.setValue(4000)
+        self.dollar_value.wheelEvent = lambda event, s=self.dollar_value: custom_wheel_event(s, event)
+        self.dollar_value.setFocusPolicy(Qt.ClickFocus)
         dollar_layout.addWidget(self.dollar_value)
         offers_layout.addLayout(dollar_layout)
         
@@ -702,6 +709,8 @@ class TodoIncluidoTab(QWidget):
             age_spin.setRange(0, 11)
             age_spin.setValue(5)
             age_spin.valueChanged.connect(self.calculate_total)
+            age_spin.wheelEvent = lambda event, s=age_spin: custom_wheel_event(s, event)
+            age_spin.setFocusPolicy(Qt.ClickFocus)
             
             # Agregar widgets al contenedor
             age_container.addWidget(label)
@@ -760,3 +769,7 @@ class TodoIncluidoTab(QWidget):
                 outline: 0;
             }
         """) 
+
+def custom_wheel_event(spinbox, event):
+    spinbox.clearFocus()
+    event.ignore() 

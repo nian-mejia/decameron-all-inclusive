@@ -1,0 +1,15 @@
+# Core dependencies
+PySide6>=6.9.0
+pandas>=2.0.0
+
+# Data processing and visualization
+matplotlib>=3.8.2
+seaborn>=0.13.0
+
+# Development tools
+jupyter>=1.0.0
+notebook>=7.0.6
+
+# Optional dependencies
+requests>=2.31.0
+beautifulsoup4>=4.12.0

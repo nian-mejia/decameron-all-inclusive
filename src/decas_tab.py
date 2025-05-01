@@ -3,7 +3,8 @@ import pandas as pd
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel, 
                               QComboBox, QSpinBox, QGroupBox, QCalendarWidget,
                               QPushButton, QLineEdit, QScrollArea, QCompleter)
-from PySide6.QtCore import QDate, Qt, QPoint
+from PySide6.QtCore import QDate, Qt
+from decameron_styles import GROUPBOX_STYLE, COMBOBOX_STYLE, LABEL_STYLE
 
 class DateInput(QLineEdit):
     def __init__(self, parent=None):
@@ -60,7 +61,7 @@ class DecasTab(QWidget):
         # Contenedor principal con scroll
         main_widget = QWidget()
         main_layout = QVBoxLayout(main_widget)
-        main_layout.setSpacing(20)  # Aumentar el espacio entre grupos
+        main_layout.setSpacing(20)  # Espacio entre grupos
         main_layout.setContentsMargins(20, 20, 20, 20)
         
         scroll = QScrollArea()
@@ -74,37 +75,19 @@ class DecasTab(QWidget):
         
         # Grupo de selección de hotel
         hotel_group = QGroupBox("Selección de Hotel")
-        hotel_group.setStyleSheet("""
-            QGroupBox {
-                font-weight: bold;
-                border: 1px solid #ccc;
-                border-radius: 6px;
-                margin-top: 6px;
-                padding-top: 10px;
-            }
-            QGroupBox::title {
-                subcontrol-origin: margin;
-                left: 10px;
-                padding: 0 5px;
-            }
-        """)
+        hotel_group.setStyleSheet(GROUPBOX_STYLE)
         hotel_layout = QVBoxLayout()
-        hotel_layout.setSpacing(12)  # Aumentar espacio entre elementos
-        hotel_layout.setContentsMargins(15, 15, 15, 15)  # Agregar padding interno
+        hotel_layout.setSpacing(10)
+        hotel_layout.setContentsMargins(15, 15, 15, 15)
         
         # Crear los widgets
         hotel_label = QLabel("Hotel:")
-        hotel_label.setStyleSheet("""
-            QLabel {
-                font-size: 14px;
-                font-weight: bold;
-                color: #333;
-                margin-bottom: 5px;
-            }
-        """)
+        hotel_label.setStyleSheet(LABEL_STYLE)
         self.hotel_combo = QComboBox()
         self.hotel_combo.setEditable(True)
         self.hotel_combo.setInsertPolicy(QComboBox.NoInsert)
+        self.hotel_combo.setMinimumWidth(300)
+        self.hotel_combo.setStyleSheet(COMBOBOX_STYLE)
         completer = QCompleter(self.hotel_combo.model(), self.hotel_combo)
         completer.setCaseSensitivity(Qt.CaseInsensitive)
         completer.setFilterMode(Qt.MatchContains)
@@ -112,39 +95,10 @@ class DecasTab(QWidget):
         self.hotel_combo.setCompleter(completer)
         
         season_label = QLabel("Temporada:")
-        season_label.setStyleSheet(hotel_label.styleSheet())
+        season_label.setStyleSheet(LABEL_STYLE)
         self.season_combo = QComboBox()
-        
-        for combo in [self.hotel_combo, self.season_combo]:
-            combo.setStyleSheet("""
-                QComboBox {
-                    padding: 8px 12px;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                    background: white;
-                    min-height: 20px;
-                    font-size: 14px;
-                }
-                QComboBox:hover {
-                    border: 1px solid #999;
-                }
-                QComboBox::drop-down {
-                    border: none;
-                    padding-right: 8px;
-                }
-                QComboBox::down-arrow {
-                    image: url(assets/icons/down-arrow.png);
-                    width: 12px;s
-                    height: 12px;
-                }
-                QComboBox QAbstractItemView {
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                    background: white;
-                    selection-background-color: #0078D4;
-                    selection-color: white;
-                }
-            """)
+        self.season_combo.setMinimumWidth(300)
+        self.season_combo.setStyleSheet(COMBOBOX_STYLE)
         
         hotel_layout.addWidget(hotel_label)
         hotel_layout.addWidget(self.hotel_combo)
@@ -157,7 +111,7 @@ class DecasTab(QWidget):
         
         # Grupo de fechas
         dates_group = QGroupBox("Selección de Fechas")
-        dates_group.setStyleSheet(hotel_group.styleSheet())
+        dates_group.setStyleSheet(GROUPBOX_STYLE)
         dates_layout = QVBoxLayout()
         dates_layout.setSpacing(12)
         dates_layout.setContentsMargins(15, 15, 15, 15)
@@ -234,7 +188,7 @@ class DecasTab(QWidget):
         
         # Frame para selección de habitaciones
         rooms_group = QGroupBox("Selección de Habitaciones")
-        rooms_group.setStyleSheet(hotel_group.styleSheet())
+        rooms_group.setStyleSheet(GROUPBOX_STYLE)
         rooms_layout = QVBoxLayout()
         rooms_layout.setSpacing(12)
         rooms_layout.setContentsMargins(15, 15, 15, 15)
@@ -293,9 +247,9 @@ class DecasTab(QWidget):
         rooms_group.setLayout(rooms_layout)
         main_layout.addWidget(rooms_group)
         
-        # Resultados
+        # Resultadoss
         result_group = QGroupBox("Resumen de Precios")
-        result_group.setStyleSheet(hotel_group.styleSheet())
+        result_group.setStyleSheet(GROUPBOX_STYLE)
         result_layout = QVBoxLayout()
         result_layout.setContentsMargins(15, 15, 15, 15)
         

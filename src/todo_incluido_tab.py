@@ -6,6 +6,7 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel,
                               QTextEdit, QFrame, QLineEdit, QCompleter)
 from PySide6.QtCore import QDate, Qt, QPoint
 from PySide6.QtGui import QPalette, QColor, QTextCharFormat
+from decameron_styles import GROUPBOX_STYLE, COMBOBOX_STYLE, LABEL_STYLE
 
 class RangeCalendarWidget(QCalendarWidget):
     def __init__(self, parent=None):
@@ -189,30 +190,35 @@ class TodoIncluidoTab(QWidget):
         self.calendar.setMinimumWidth(300)
         self.setup_calendar_style()
 
-    def setup_ui(self):
+    def setup_ui(self):    
         # Crear un QScrollArea
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)
         scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        scroll.setWidgetResizable(True)
+        scroll.setFrameShape(QScrollArea.NoFrame)
         
         # Crear un widget contenedor para todo el contenido
         container = QWidget()
         layout = QVBoxLayout(container)
-        layout.setContentsMargins(20, 20, 20, 20)  # Aumentar márgenes
-        layout.setSpacing(20)  # Aumentar espacio entre grupos
+        layout.setContentsMargins(20, 20, 20, 20)
+        layout.setSpacing(20)
         
         # Grupo de selección de hotel
         hotel_group = QGroupBox("Selección de Hotel")
+        hotel_group.setStyleSheet(GROUPBOX_STYLE)
         hotel_layout = QVBoxLayout()
-        hotel_layout.setSpacing(10)  # Espacio entre elementos del grupo
-        hotel_layout.setContentsMargins(15, 15, 15, 15)  # Márgenes dentro del grupo
+        hotel_layout.setSpacing(10)
+        hotel_layout.setContentsMargins(15, 15, 15, 15)
         
         # Crear los widgets
         hotel_label = QLabel("Hotel:")
+        hotel_label.setStyleSheet(LABEL_STYLE)
         self.hotel_combo = QComboBox()
-        self.hotel_combo.setMinimumWidth(300)  # Asegurar ancho mínimo
+        self.hotel_combo.setMinimumWidth(300)
         self.hotel_combo.setEditable(True)
         self.hotel_combo.setInsertPolicy(QComboBox.NoInsert)
+        self.hotel_combo.setStyleSheet(COMBOBOX_STYLE)
         completer = QCompleter(self.hotel_combo.model(), self.hotel_combo)
         completer.setCaseSensitivity(Qt.CaseInsensitive)
         completer.setFilterMode(Qt.MatchContains)
@@ -220,12 +226,16 @@ class TodoIncluidoTab(QWidget):
         self.hotel_combo.setCompleter(completer)
         
         room_label = QLabel("Tipo de Habitación:")
+        room_label.setStyleSheet(LABEL_STYLE)
         self.room_combo = QComboBox()
         self.room_combo.setMinimumWidth(300)
+        self.room_combo.setStyleSheet(COMBOBOX_STYLE)
         
         season_label = QLabel("Temporada:")
+        season_label.setStyleSheet(LABEL_STYLE)
         self.season_combo = QComboBox()
         self.season_combo.setMinimumWidth(300)
+        self.season_combo.setStyleSheet(COMBOBOX_STYLE)
         
         # Agregar los widgets al layout
         hotel_layout.addWidget(hotel_label)
@@ -242,6 +252,7 @@ class TodoIncluidoTab(QWidget):
         
         # Grupo de personas (movido aquí, después de la selección del hotel)
         people_group = QGroupBox("Personas")
+        people_group.setStyleSheet(GROUPBOX_STYLE)
         people_layout = QHBoxLayout()
         people_layout.setSpacing(15)
         
@@ -284,6 +295,7 @@ class TodoIncluidoTab(QWidget):
         
         # Grupo de fechas
         dates_group = QGroupBox("Selección de Fechas")
+        dates_group.setStyleSheet(GROUPBOX_STYLE)
         dates_layout = QVBoxLayout()
         dates_layout.setContentsMargins(10, 20, 10, 10)
         
@@ -314,7 +326,7 @@ class TodoIncluidoTab(QWidget):
         date_container.setLayout(date_fields_layout)
         date_container.setStyleSheet("""
             QFrame {
-                border: 1px solid #ccc;
+                border: none;
                 border-radius: 6px;
                 background: white;
                 padding: 5px;
@@ -327,6 +339,7 @@ class TodoIncluidoTab(QWidget):
         
         # Grupo de ofertas
         offers_group = QGroupBox("Ofertas")
+        offers_group.setStyleSheet(GROUPBOX_STYLE)
         offers_layout = QVBoxLayout()
         
         # Layout para las opciones de ofertas

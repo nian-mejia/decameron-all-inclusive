@@ -1,0 +1,27 @@
+[tool.uv]
+# Use modern dependency resolution
+resolution = "eager"
+
+# Enable caching for faster installs
+cache = true
+
+# Use system certificates
+system-certificates = true
+
+# Enable parallel downloads
+parallel = true
+
+# Specify Python version
+python-version = ">=3.9"
+
+# Configure virtual environment
+venv-location = ".venv"
+venv-create = true
+
+# Configure pip settings
+pip-config = true
+pip-compile = true
+
+# Security settings
+allow-yanked = false
+verify = true 

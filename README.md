@@ -30,7 +30,7 @@ source .venv/bin/activate  # En Unix/MacOS
 
 4. Instalar dependencias con uv y pyproject.toml:
 ```bash
-uv pip install
+uv pip install -r pyproject.toml
 ```
 
 ## Ejecutar la aplicación
@@ -43,10 +43,10 @@ python src/main.py
 
 Para agregar nuevas dependencias, edita el bloque `[project].dependencies` en `pyproject.toml` y luego ejecuta:
 ```bash
-uv pip install -r pyproject.toml
+uv add ruff
 ```
 
 Para actualizar dependencias a las últimas versiones compatibles:
 ```bash
-uv pip install --upgrade  pyproject.toml
+uv pip install --upgrade pyproject.toml
 ``` 

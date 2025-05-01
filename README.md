@@ -1,1 +1,48 @@
-# decameron-all-inclusive
+# Decameron Multivaciones
+
+Aplicación para gestionar reservas de hoteles Decameron.
+
+## Requisitos
+
+- Python 3.9 o superior
+- uv (instalador moderno de paquetes Python)
+
+## Instalación
+
+1. Instalar uv si aún no lo tienes:
+```bash
+pip install uv
+```
+
+2. Clonar el repositorio:
+```bash
+git clone git@github.com:nian-mejia/decameron-all-inclusive.git
+cd Multivaciones
+```
+
+3. Crear y activar el entorno virtual con uv:
+```bash
+uv venv
+source .venv/bin/activate  # En Unix/MacOS
+# O en Windows:
+# .venv\Scripts\activate
+```
+
+4. Instalar dependencias con uv:
+```bash
+uv pip install -r requirements.txt
+```
+
+## Ejecutar la aplicación
+
+```bash
+python src/main.py
+```
+
+## Desarrollo
+
+Para actualizar las dependencias a las últimas versiones compatibles:
+```bash
+uv pip compile requirements.txt
+uv pip install -r requirements.txt
+``` 

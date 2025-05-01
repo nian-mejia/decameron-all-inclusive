@@ -10,18 +10,6 @@ QLabel {
     font-size: 12px;
 }
 
-/* Combo Boxes */
-QComboBox {
-    padding: 8px;
-    border: 2px solid #cbd5e0;
-    border-radius: 6px;
-    font-size: 12px;
-    background-color: white;
-    color: #1a365d;
-    min-width: 300px;
-    margin: 2px;
-}
-
 QComboBox:hover {
     border-color: #2c5282;
 }

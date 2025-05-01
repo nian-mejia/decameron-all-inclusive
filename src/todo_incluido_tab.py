@@ -555,9 +555,9 @@ class TodoIncluidoTab(QWidget):
         
         check_in_date = self.check_in_date
         check_out_date = self.check_out_date
-        days = check_in_date.daysTo(check_out_date)
+        nights = check_in_date.daysTo(check_out_date)
         
-        if days <= 0:
+        if nights <= 0:
             self.result_label.setText("Por favor seleccione fechas válidas")
             return
         
@@ -568,7 +568,7 @@ class TodoIncluidoTab(QWidget):
         details.append(f"<b>Habitación:</b> {self.room_combo.currentText()}")
         details.append(f"<b>Temporada:</b> {self.season_combo.currentText()}</p>")
         details.append(f"<p><b>Fechas:</b> {check_in_date.toString('dd/MM/yyyy')} - {check_out_date.toString('dd/MM/yyyy')}")
-        details.append(f"<b>Total días:</b> {days}</p>")
+        details.append(f"<b>Total noches:</b> {nights}</p>")
         details.append(f"<p><b>Personas:</b> {self.adults_spin.value()} adultos, {self.children_spin.value()} niños</p>")
         
         # Obtener precios base
@@ -651,7 +651,7 @@ class TodoIncluidoTab(QWidget):
         self.calculation_details = "<br>".join(details)
         
         # Mostrar resultados resumidos
-        result_text = f"Total para {days} días:\n"
+        result_text = f"Total para {nights} días:\n"
         result_text += f"{self.adults_spin.value()} adultos, {self.children_spin.value()} niños\n"
         result_text += f"USD ${total:.2f}\n"
         result_text += f"COP ${total_cop:,.0f}"

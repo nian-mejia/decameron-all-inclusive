@@ -28,9 +28,9 @@ source .venv/bin/activate  # En Unix/MacOS
 # .venv\Scripts\activate
 ```
 
-4. Instalar dependencias con uv:
+4. Instalar dependencias con uv y pyproject.toml:
 ```bash
-uv pip install -r requirements.txt
+uv pip install
 ```
 
 ## Ejecutar la aplicación
@@ -41,8 +41,12 @@ python src/main.py
 
 ## Desarrollo
 
-Para actualizar las dependencias a las últimas versiones compatibles:
+Para agregar nuevas dependencias, edita el bloque `[project].dependencies` en `pyproject.toml` y luego ejecuta:
 ```bash
-uv pip compile requirements.txt
-uv pip install -r requirements.txt
+uv pip install -r pyproject.toml
+```
+
+Para actualizar dependencias a las últimas versiones compatibles:
+```bash
+uv pip install --upgrade  pyproject.toml
 ``` 

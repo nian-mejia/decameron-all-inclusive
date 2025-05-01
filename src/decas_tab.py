@@ -2,9 +2,8 @@ import os
 import pandas as pd
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel, 
                               QComboBox, QSpinBox, QGroupBox, QCalendarWidget,
-                              QPushButton, QLineEdit, QScrollArea)
+                              QPushButton, QLineEdit, QScrollArea, QCompleter)
 from PySide6.QtCore import QDate, Qt, QPoint
-from PySide6.QtGui import QColor, QPalette
 
 class DateInput(QLineEdit):
     def __init__(self, parent=None):
@@ -93,7 +92,27 @@ class DecasTab(QWidget):
         hotel_layout.setSpacing(12)  # Aumentar espacio entre elementos
         hotel_layout.setContentsMargins(15, 15, 15, 15)  # Agregar padding interno
         
+        # Crear los widgets
+        hotel_label = QLabel("Hotel:")
+        hotel_label.setStyleSheet("""
+            QLabel {
+                font-size: 14px;
+                font-weight: bold;
+                color: #333;
+                margin-bottom: 5px;
+            }
+        """)
         self.hotel_combo = QComboBox()
+        self.hotel_combo.setEditable(True)
+        self.hotel_combo.setInsertPolicy(QComboBox.NoInsert)
+        completer = QCompleter(self.hotel_combo.model(), self.hotel_combo)
+        completer.setCaseSensitivity(Qt.CaseInsensitive)
+        completer.setFilterMode(Qt.MatchContains)
+        completer.setCompletionMode(QCompleter.PopupCompletion)
+        self.hotel_combo.setCompleter(completer)
+        
+        season_label = QLabel("Temporada:")
+        season_label.setStyleSheet(hotel_label.styleSheet())
         self.season_combo = QComboBox()
         
         for combo in [self.hotel_combo, self.season_combo]:
@@ -104,6 +123,7 @@ class DecasTab(QWidget):
                     border-radius: 4px;
                     background: white;
                     min-height: 20px;
+                    font-size: 14px;
                 }
                 QComboBox:hover {
                     border: 1px solid #999;
@@ -114,15 +134,22 @@ class DecasTab(QWidget):
                 }
                 QComboBox::down-arrow {
                     image: url(assets/icons/down-arrow.png);
-                    width: 12px;
+                    width: 12px;s
                     height: 12px;
+                }
+                QComboBox QAbstractItemView {
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    background: white;
+                    selection-background-color: #0078D4;
+                    selection-color: white;
                 }
             """)
         
-        hotel_layout.addWidget(QLabel("Hotel:"))
+        hotel_layout.addWidget(hotel_label)
         hotel_layout.addWidget(self.hotel_combo)
         hotel_layout.addSpacing(8)  # Espacio entre hotel y temporada
-        hotel_layout.addWidget(QLabel("Temporada:"))
+        hotel_layout.addWidget(season_label)
         hotel_layout.addWidget(self.season_combo)
         
         hotel_group.setLayout(hotel_layout)
@@ -231,6 +258,8 @@ class DecasTab(QWidget):
             spinner.setMaximum(10)
             spinner.setValue(0)
             spinner.setMinimumWidth(100)
+            spinner.setButtonSymbols(QSpinBox.UpDownArrows)
+            spinner.wheelEvent = lambda event: None  # Ignorar eventos de rueda
             spinner.setStyleSheet("""
                 QSpinBox {
                     padding: 8px;
@@ -238,6 +267,7 @@ class DecasTab(QWidget):
                     border-radius: 4px;
                     background: white;
                     min-height: 20px;
+                    font-size: 14px;
                 }
                 QSpinBox:hover {
                     border: 1px solid #999;

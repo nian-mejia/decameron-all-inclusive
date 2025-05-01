@@ -3,7 +3,7 @@ import pandas as pd
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel, 
                               QComboBox, QSpinBox, QGroupBox, QCalendarWidget,
                               QPushButton, QCheckBox, QScrollArea, QDialog,
-                              QTextEdit, QFrame, QLineEdit)
+                              QTextEdit, QFrame, QLineEdit, QCompleter)
 from PySide6.QtCore import QDate, Qt, QPoint
 from PySide6.QtGui import QPalette, QColor, QTextCharFormat
 
@@ -211,6 +211,13 @@ class TodoIncluidoTab(QWidget):
         hotel_label = QLabel("Hotel:")
         self.hotel_combo = QComboBox()
         self.hotel_combo.setMinimumWidth(300)  # Asegurar ancho mínimo
+        self.hotel_combo.setEditable(True)
+        self.hotel_combo.setInsertPolicy(QComboBox.NoInsert)
+        completer = QCompleter(self.hotel_combo.model(), self.hotel_combo)
+        completer.setCaseSensitivity(Qt.CaseInsensitive)
+        completer.setFilterMode(Qt.MatchContains)
+        completer.setCompletionMode(QCompleter.PopupCompletion)
+        self.hotel_combo.setCompleter(completer)
         
         room_label = QLabel("Tipo de Habitación:")
         self.room_combo = QComboBox()

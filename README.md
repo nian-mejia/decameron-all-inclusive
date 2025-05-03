@@ -36,7 +36,7 @@ uv pip install -r pyproject.toml
 ## Ejecutar la aplicación
 
 ```bash
-python src/main.py
+python3 src/main.py
 ```
 
 ## Desarrollo

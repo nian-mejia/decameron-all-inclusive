@@ -162,7 +162,8 @@ class TodoIncluidoTab(QWidget):
             # Inicializar los combos después de cargar los datos
             hoteles = sorted(self.df['Hotel'].unique())
             print(f"Agregando {len(hoteles)} hoteles al combo")
-            self.hotel_combo = NoScrollComboBox()
+            
+            # Limpiar y añadir items al combobox existente
             self.hotel_combo.clear()
             self.hotel_combo.addItems(hoteles)
             
@@ -171,10 +172,10 @@ class TodoIncluidoTab(QWidget):
                 self.hotel_combo.setCurrentText(self.shared_state.hotel)
             else:
                 # Si no hay hotel seleccionado, establecer Isleño como default
-                default_index = self.hotel_combo.findText("Isleño")
+                default_index = self.hotel_combo.findText("DECAMERON ISLEÑO")
                 if default_index >= 0:
-                    self.hotel_combo.setCurrentText("Isleño")
-                    self.shared_state.hotel = "Isleño"
+                    self.hotel_combo.setCurrentIndex(default_index)
+                    self.shared_state.hotel = "DECAMERON ISLEÑO"
             
             self.season_combo.clear()
             self.season_combo.addItems(["Baja", "Media", "Alta"])

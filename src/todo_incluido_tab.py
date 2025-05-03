@@ -128,6 +128,10 @@ class DateInput(QLineEdit):
         if parent:
             parent.show_calendar(self)
 
+class NoScrollComboBox(QComboBox):
+    def wheelEvent(self, event):
+        event.ignore()  # Ignora el scroll para evitar cambiar la selección
+
 class TodoIncluidoTab(QWidget):
     def __init__(self, shared_state, parent=None):
         super().__init__(parent)
@@ -158,6 +162,7 @@ class TodoIncluidoTab(QWidget):
             # Inicializar los combos después de cargar los datos
             hoteles = sorted(self.df['Hotel'].unique())
             print(f"Agregando {len(hoteles)} hoteles al combo")
+            self.hotel_combo = NoScrollComboBox()
             self.hotel_combo.clear()
             self.hotel_combo.addItems(hoteles)
             
@@ -214,7 +219,7 @@ class TodoIncluidoTab(QWidget):
         # Crear los widgets
         hotel_label = QLabel("Hotel:")
         hotel_label.setStyleSheet(LABEL_STYLE)
-        self.hotel_combo = QComboBox()
+        self.hotel_combo = NoScrollComboBox()
         self.hotel_combo.setMinimumWidth(300)
         self.hotel_combo.setEditable(True)
         self.hotel_combo.setInsertPolicy(QComboBox.NoInsert)

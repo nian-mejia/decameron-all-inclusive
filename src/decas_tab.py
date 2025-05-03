@@ -23,6 +23,10 @@ class DateInput(QLineEdit):
             }
         """)
 
+class NoScrollComboBox(QComboBox):
+    def wheelEvent(self, event):
+        event.ignore()  # Ignora el scroll para evitar cambiar la selección
+
 class DecasTab(QWidget):
     def __init__(self, shared_state, parent=None):
         super().__init__(parent)
@@ -83,7 +87,7 @@ class DecasTab(QWidget):
         # Crear los widgets
         hotel_label = QLabel("Hotel:")
         hotel_label.setStyleSheet(LABEL_STYLE)
-        self.hotel_combo = QComboBox()
+        self.hotel_combo = NoScrollComboBox()
         self.hotel_combo.setEditable(True)
         self.hotel_combo.setInsertPolicy(QComboBox.NoInsert)
         self.hotel_combo.setMinimumWidth(300)

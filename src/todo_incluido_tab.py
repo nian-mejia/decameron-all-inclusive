@@ -575,7 +575,7 @@ class TodoIncluidoTab(QWidget):
         weekday_price = float(self.current_prices.get('weekday', 0))
         weekend_price = float(self.current_prices.get('weekend', 0))
         
-        details.append("<h4>Desglose de Precios por Día</h4>")
+        details.append("<h4>Desglose de Precios por noche</h4>")
         details.append("<p><b>Tarifa entre semana:</b> ${:,.2f}<br>".format(weekday_price))
         details.append("<b>Tarifa fin de semana:</b> ${:,.2f}</p>".format(weekend_price))
         
@@ -594,11 +594,11 @@ class TodoIncluidoTab(QWidget):
                 weekday_count += 1
             current_date = current_date.addDays(1)
         
-        details.append(f"<p>Días entre semana: {weekday_count} (${weekday_count * weekday_price:,.2f})<br>")
-        details.append(f"Días fin de semana: {weekend_count} (${weekend_count * weekend_price:,.2f})</p>")
+        details.append(f"<p>Entre semana: {weekday_count} (${weekday_count * weekday_price:,.2f})<br>")
+        details.append(f"Fin de semana: {weekend_count} (${weekend_count * weekend_price:,.2f})</p>")
         
         subtotal = total
-        details.append(f"<p><b>Subtotal por día:</b> ${subtotal:,.2f}</p>")
+        details.append(f"<p><b>Subtotal por noche:</b> ${subtotal:,.2f}</p>")
         
         # Calcular total para adultos
         total_adults = subtotal
@@ -651,7 +651,7 @@ class TodoIncluidoTab(QWidget):
         self.calculation_details = "<br>".join(details)
         
         # Mostrar resultados resumidos
-        result_text = f"Total para {nights} días:\n"
+        result_text = f"Total para {nights} noches:\n"
         result_text += f"{self.adults_spin.value()} adultos, {self.children_spin.value()} niños\n"
         result_text += f"USD ${total:.2f}\n"
         result_text += f"COP ${total_cop:,.0f}"

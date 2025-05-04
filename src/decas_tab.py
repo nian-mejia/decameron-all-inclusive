@@ -360,6 +360,7 @@ class DecasTab(QWidget):
             
         # Calcular tarifas por tipo de habitación
         total_general = 0.0
+        total_decas = 0
         desglose = []
         
         # Obtener datos del hotel
@@ -382,6 +383,7 @@ class DecasTab(QWidget):
                     
                     if not datos_dia.empty:
                         tarifa_decas = float(datos_dia[tipo].iloc[0])
+                        total_decas += tarifa_decas
                         tarifa_usd = tarifa_decas * 5  # Convertir decas a USD
                         subtotal_tipo += tarifa_usd
                         desglose_tipo.append(f"{current_date.toString('dd/MM/yyyy')}: ${tarifa_usd:.2f} (${tarifa_decas:.2f} decas)")
@@ -390,6 +392,7 @@ class DecasTab(QWidget):
                 
                 # Multiplicar por número de habitaciones
                 total_tipo = subtotal_tipo * num_habitaciones
+                total_decas = total_decas * num_habitaciones
                 total_general += total_tipo
                 
                 # Agregar al desglose
@@ -398,10 +401,12 @@ class DecasTab(QWidget):
                     desglose.extend([f"  {linea}" for linea in desglose_tipo])
                     if num_habitaciones > 1:
                         desglose.append(f"  Subtotal por habitación: ${subtotal_tipo:.2f}")
-                        desglose.append(f"  Total {num_habitaciones} habitaciones: ${total_tipo:.2f}")
+        
+        # Mostrar el total de decas
+        desglose.append(f"\nTOTAL DECAS: {total_decas:.2f}")
         
         # Mostrar el total general en USD
-        desglose.append(f"\nTOTAL USD: ${total_general:.2f}")
+        desglose.append(f"TOTAL USD: ${total_general:.2f}")
         
         # Calcular y mostrar el total en COP
         total_cop = total_general * 4000

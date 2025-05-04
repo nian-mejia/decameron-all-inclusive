@@ -403,14 +403,14 @@ class DecasTab(QWidget):
                         desglose.append(f"  Subtotal por habitación: ${subtotal_tipo:.2f}")
         
         # Mostrar el total de decas
-        desglose.append(f"\nTOTAL DECAS: {total_decas:.2f}")
+        desglose.append(f"\nTOTAL DECAS: {total_decas:.0f}")
         
         # Mostrar el total general en USD
-        desglose.append(f"TOTAL USD: ${total_general:.2f}")
+        desglose.append(f"TOTAL USD: ${total_general:.0f}")
         
         # Calcular y mostrar el total en COP
         total_cop = total_general * 4000
-        desglose.append(f"TOTAL COP: ${total_cop:,.2f}")
+        desglose.append(f"TOTAL COP: ${total_cop:,.0f}")
         
         self.result_label.setText("\n".join(desglose))
 

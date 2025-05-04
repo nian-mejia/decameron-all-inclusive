@@ -32,6 +32,10 @@ source .venv/bin/activate  # En Unix/MacOS
 ```bash
 uv pip install -r pyproject.toml
 ```
+O si prefieres usar `uv`:
+```
+uv pip install -e .
+```
 
 ## Ejecutar la aplicación
 

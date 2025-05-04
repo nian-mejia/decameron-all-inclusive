@@ -2,7 +2,8 @@ import os
 import pandas as pd
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel, 
                               QComboBox, QSpinBox, QGroupBox, QCalendarWidget,
-                              QPushButton, QLineEdit, QScrollArea, QCompleter, QApplication)
+                              QPushButton, QLineEdit, QScrollArea, QCompleter, QApplication,
+                              QCheckBox)
 from PySide6.QtCore import QDate, Qt
 from decameron_styles import GROUPBOX_STYLE, COMBOBOX_STYLE, LABEL_STYLE
 
@@ -252,6 +253,30 @@ class DecasTab(QWidget):
         rooms_group.setLayout(rooms_layout)
         main_layout.addWidget(rooms_group)
         
+        # Administración Anual
+        admin_group = QGroupBox("Administración Anual")
+        admin_group.setStyleSheet(GROUPBOX_STYLE)
+        admin_layout = QVBoxLayout()
+        admin_layout.setSpacing(12)
+        admin_layout.setContentsMargins(15, 15, 15, 15)
+        
+        admin_description = QLabel("La administración anual es un cargo adicional que se calcula como 0.9 USD por deca, con un mínimo de 70 decas.")
+        admin_description.setWordWrap(True)
+        admin_description.setStyleSheet("font-size: 13px; color: #555;")
+        
+        admin_checkbox_layout = QHBoxLayout()
+        self.include_admin_checkbox = QCheckBox("Incluir administración anual en el cálculo")
+        self.include_admin_checkbox.setChecked(True)  # Por defecto activado
+        self.include_admin_checkbox.toggled.connect(self.calculate_total)
+        admin_checkbox_layout.addWidget(self.include_admin_checkbox)
+        admin_checkbox_layout.addStretch()
+        
+        admin_layout.addWidget(admin_description)
+        admin_layout.addLayout(admin_checkbox_layout)
+        
+        admin_group.setLayout(admin_layout)
+        main_layout.addWidget(admin_group)
+        
         # Resultadoss
         result_group = QGroupBox("Resumen de Precios")
         result_group.setStyleSheet(GROUPBOX_STYLE)
@@ -407,6 +432,18 @@ class DecasTab(QWidget):
         
         # Mostrar el total general en USD
         desglose.append(f"TOTAL USD: ${total_general:.0f}")
+        
+        # Calcular y mostrar la administración anual
+        if hasattr(self, 'include_admin_checkbox') and self.include_admin_checkbox.isChecked():
+            admin_decas = max(70, total_decas)
+            admin_usd = admin_decas * 0.9
+            desglose.append(f"\nADMINISTRACIÓN ANUAL:")
+            desglose.append(f"  Decas: {admin_decas:.0f}")
+            desglose.append(f"  USD (0.9 × Deca): ${admin_usd:.2f}")
+            
+            # Añadir al total general
+            total_general += admin_usd
+            desglose.append(f"\nTOTAL USD (con administración): ${total_general:.2f}")
         
         # Calcular y mostrar el total en COP
         total_cop = total_general * 4000

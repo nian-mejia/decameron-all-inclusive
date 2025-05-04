@@ -30,10 +30,6 @@ source .venv/bin/activate  # En Unix/MacOS
 
 4. Instalar dependencias con uv y pyproject.toml:
 ```bash
-uv pip install -r pyproject.toml
-```
-O si prefieres usar `uv`:
-```
 uv pip install -e .
 ```
 
